@@ -22,8 +22,13 @@ class EvpWebToPayExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('evp_web_to_pay.credentials.project_id', $config['credentials']['project_id']);
-        $container->setParameter('evp_web_to_pay.credentials.sign_password', $config['credentials']['sign_password']);
+        if (isset($config['credentials']['project_id'])) {
+            $container->setParameter('evp_web_to_pay.credentials.project_id', $config['credentials']['project_id']);
+        }
+
+        if (isset($config['credentials']['sign_password'])) {
+            $container->setParameter('evp_web_to_pay.credentials.sign_password', $config['credentials']['sign_password']);
+        }
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
