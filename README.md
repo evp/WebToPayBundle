@@ -87,6 +87,7 @@ Information about the current payment request has to be an array and may contain
       time_limit
 ```
 Orderid,accepturl,cancelurl and callbackurl parameters are ***mandatory***. The rest are optional.
+Keep in mind the test parameter: you can set it to 1 test whether your request is correct or not.
 
 
 ##Contacts
