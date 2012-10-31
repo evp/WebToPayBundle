@@ -14,9 +14,10 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Requirements
 * Symfony 2.0+
+* The original libwebtopay library (can be found [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
 
 ##Installation
-* Download the original WebToPay library (can be downloaded [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
+* Download the original WebToPay library
 * The downloaded library can be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
 * Create a directory called Evp in your src directory
 * Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your src/Evp directory to retrieve the WebToPayBundle
