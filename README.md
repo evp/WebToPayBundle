@@ -18,7 +18,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Installation
 * Download the original WebToPay library
-* The downloaded library can be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
+* The downloaded library should be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
 * Create a directory called Evp in your src directory
 * Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your src/Evp directory to retrieve the WebToPayBundle
 * Add the following code to your app/autoload.php:
@@ -26,19 +26,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 ```php
    $loader->add('WebToPay', __DIR__.'/../vendor/evp/webtopay/src');
 ```
-* Update your AppKernel by adding the new bundle to the list
-
-```php
-         $bundles = array(
-             // ... your existing bundles here
-             new \Evp\Bundle\WebToPayBundle\EvpWebToPayBundle()
-         );
-
-         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-             // ... your existing bundles here
-             $bundles[] = new \Evp\Bundle\WebToPayBundle\EvpWebToPayBundle();
-         }
-```
+* Update your AppKernel by referencing the new bundle
 
 * Configure your app/config/config.yml
 ```
