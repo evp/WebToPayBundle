@@ -10,7 +10,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Code samples](#code-samples)
-* [Code samples](#contacts)
+* [Contacts](#contacts)
 
 ##Requirements
 * Symfony 2.0+
