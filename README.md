@@ -17,16 +17,29 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * The original libwebtopay library (can be found [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
 
 ##Installation
-* Download the original WebToPay library
+* Download the original WebToPay library (the link can be found in the [requirements](#requirements) section )
 * The downloaded library should be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
 * Create a directory called Evp in your src directory
-* Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your src/Evp directory to retrieve the WebToPayBundle
+* Create a directory called Bundle inside the Evp directory
+* Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your src/Evp/Bundle directory to retrieve the WebToPayBundle
 * Add the following code to your app/autoload.php:
 
 ```php
-   $loader->add('WebToPay', __DIR__.'/../vendor/evp/webtopay/src');
+  $loader->add('Evp', __DIR__.'/../src');
 ```
-* Update your AppKernel by referencing the new bundle
+* Update your AppKernel by referencing the new bundle:
+
+```php
+    public function registerBundles()
+    {
+        $bundles = array(
+            //... your existing bundles here
+            new Evp\Bundle\WebToPayBundle\EvpWebToPayBundle(),
+        );
+
+        // ...
+    }
+```
 
 * Configure your app/config/config.yml
 ```
@@ -93,11 +106,16 @@ Keep in mind the test parameter: you can set it to 1 test whether your request i
 ##Contacts
 If you have any further questions feel free to contact us:
 
-```
+
+
 "EVP International", UAB
+
 Mėnulio g. 7
+
 LT-04326 Vilnius
+
 Email: pagalba@mokejimai.lt
+
 Tel. +370 (5) 2 03 27 19
+
 Faksas +370 (5) 2 63 91 79
-```
