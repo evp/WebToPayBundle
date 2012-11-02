@@ -41,13 +41,15 @@ We encourage you to first take a look at the [original library](https://bitbucke
 ```
 
 * Configure your app/config/config.yml
+
 ```yml
-evp_web_to_pay:
-   credentials:
-       project_id: your_project_id
-       sign_password: your_password
+evp_web_to_pay:    
+   credentials:    
+       project_id: your_project_id    
+       sign_password: your_password    
 ```
-Don't forget to replace *your_project_id* and *your_password* with the actual credentials.
+
+Don't forget to replace *your_project_id* and *your_password* with the actual credentials.    
 
 That's it, you are now ready to use WebToPayBundle.
 
