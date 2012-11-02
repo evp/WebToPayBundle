@@ -86,9 +86,8 @@ $container->get('evp_web_to_pay.request_builder')->buildRequest(array(
     'test' => 0,
 ));
 ```
-Orderid,accepturl,cancelurl and callbackurl parameters are ***mandatory***. The rest are optional.
-Keep in mind the test parameter: you can set it to 1 test whether your request is correct or not.
 
+Keep in mind the test parameter: you can set it to 1 test whether your request is correct or not.
 
 ##Contacts
 If you have any further questions feel free to contact us:
