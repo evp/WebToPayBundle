@@ -1,7 +1,7 @@
 #WebToPayBundle
 
 ##What is WebToPayBundle?
-WebToPayBundle is a small bundle that can serve as a bridge between your Symfony framework and the original web to pay library.
+WebToPayBundle is a small bundle that can serve as a bridge between your Symfony framework and the original webtopay library.
 
 We encourage you to first take a look at the [original library](https://bitbucket.org/webtopay/libwebtopay)
 
@@ -19,13 +19,12 @@ We encourage you to first take a look at the [original library](https://bitbucke
 ##Installation
 * Download the original WebToPay library (the link can be found in the [requirements](#requirements) section )
 * The downloaded library should be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
-* Create a directory called Evp in your src directory
-* Create a directory called Bundle inside the Evp directory
-* Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your src/Evp/Bundle directory to retrieve the WebToPayBundle
+* Create the following directory structure: vendor/evp/bundles/Evp/Bundle
+* Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your vendor/evp/bundles/Evp/Bundle directory to retrieve the WebToPayBundle
 * Add the following code to your app/autoload.php:
 
 ```php
-  $loader->add('Evp', __DIR__.'/../src');
+  $loader->add('Evp', __DIR__.'/../vendor/evp/bundles');
 ```
 * Update your AppKernel by referencing the new bundle:
 
@@ -42,11 +41,11 @@ We encourage you to first take a look at the [original library](https://bitbucke
 ```
 
 * Configure your app/config/config.yml
-```
-   evp_web_to_pay:
-       credentials:
-           project_id: your_project_id
-           sign_password: your_password
+```yml
+evp_web_to_pay:
+   credentials:
+       project_id: your_project_id
+       sign_password: your_password
 ```
 Don't forget to replace *your_project_id* and *your_password* with the actual credentials.
 
@@ -72,32 +71,18 @@ Use the evp_web_to_pay.callback_validator service to perform callback validation
 Use the evp_web_to_pay.request_builder service to create a request:
 
 ```php
-->get('evp_web_to_pay.request_builder')->buildRequest(array(
-  // information about the current payment request
+$container->get('evp_web_to_pay.request_builder')->buildRequest(array(
+    'projectid' => 0,
+    'sign_password' => 'd41d8cd98f00b204e9800998ecf8427e',
+    'orderid' => 0,
+    'amount' => 1000,
+    'currency' => 'LTL',
+    'country' => 'LT',
+    'accepturl' => $self_url.'/accept.php',
+    'cancelurl' => $self_url.'/cancel.php',
+    'callbackurl' => $self_url.'/callback.php',
+    'test' => 0,
 ));
-```
-Information about the current payment request has to be an array and may contain the following indexes
-```
-      orderid
-      accepturl
-      cancelurl
-      callbackurl
-      lang
-      amount
-      currency
-      payment
-      country
-      paytext
-      p_firstname
-      p_lastname
-      p_email
-      p_street
-      p_city
-      p_state
-      p_zip
-      p_countrycode
-      test
-      time_limit
 ```
 Orderid,accepturl,cancelurl and callbackurl parameters are ***mandatory***. The rest are optional.
 Keep in mind the test parameter: you can set it to 1 test whether your request is correct or not.
