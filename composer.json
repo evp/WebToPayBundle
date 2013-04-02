@@ -1,5 +1,5 @@
 {
-    "name": "webtopay/WebToPayBundle",
+    "name": "webtopay/webtopay-bundle",
     "description": "Symfony2 bundle for WebToPay provided services",
     "minimum-stability": "dev",
     "authors": [
