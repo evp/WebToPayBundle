@@ -5,6 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="evp_web_to_pay.client.class">WebToPay</parameter>
         <parameter key="evp_web_to_pay.factory.class">WebToPay_Factory</parameter>
         <parameter key="evp_web_to_pay.callback_validator.class">WebToPay_CallbackValidator</parameter>
         <parameter key="evp_web_to_pay.request_builder.class">WebToPay_RequestBuilder</parameter>
@@ -26,5 +27,8 @@
         <!-- Request builder service -->
         <service id="evp_web_to_pay.request_builder" class="%evp_web_to_pay.request_builder.class%"
                  factory-service="evp_web_to_pay.factory" factory-method="getRequestBuilder"/>
+
+        <!-- Client service -->
+        <service id="evp_web_to_pay.client" class="%evp_web_to_pay.client.class%"/>
     </services>
 </container>

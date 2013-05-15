@@ -73,7 +73,7 @@ Use the evp_web_to_pay.callback_validator service to perform callback validation
 Use the evp_web_to_pay.request_builder service to create a request:
 
 ```php
-$container->get('evp_web_to_pay.request_builder')->buildRequest(array(
+$container->get('evp_web_to_pay.request_builder')->redirectPayment(array(
     'projectid' => 0,
     'sign_password' => 'd41d8cd98f00b204e9800998ecf8427e',
     'orderid' => 0,
