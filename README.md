@@ -17,32 +17,85 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * The original libwebtopay library (can be found [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
 
 ##Installation
-* Download the original WebToPay library (the link can be found in the [requirements](#requirements) section )
-* The downloaded library should be placed in the vendors catalogue ("vendor/evp/webtopay" is the recommended path)
-* Create the following directory structure: vendor/evp/bundles/Evp/Bundle
-* Use ```git clone https://github.com/evp/WebToPayBundle.git``` in your vendor/evp/bundles/Evp/Bundle directory to retrieve the WebToPayBundle
-* Add the following code to your app/autoload.php:
 
-```php
-  $loader->add('Evp', __DIR__.'/../vendor/evp/bundles');
+###Symfony 2.0.* installation (deps)
+
+* Add the following lines in your `deps` file:
+
+``` ini
+[WebToPayBundle]
+    git=https://github.com/evp/WebToPayBundle
+    target=/bundles/Evp/Bundle/WebToPayBundle
 ```
-* Update your AppKernel by referencing the new bundle:
 
-```php
-    public function registerBundles()
-    {
-        $bundles = array(
-            //... your existing bundles here
-            new Evp\Bundle\WebToPayBundle\EvpWebToPayBundle(),
-        );
+* Run the vendors script to download the bundle:
 
-        // ...
-    }
+``` bash
+$ php bin/vendors install
+```
+
+* Add the Evp namespace to your autoloader:
+
+``` php
+<?php
+// app/autoload.php
+
+$loader->registerNamespaces(array(
+    // ...
+    'Evp' => __DIR__.'/../vendor/bundles',
+));
+```
+
+* Finally, enable the bundle in the kernel:
+
+``` php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        //... your existing bundles here
+        new Evp\Bundle\WebToPayBundle\EvpWebToPayBundle(),
+    );
+}
 ```
 
 * Configure your app/config/config.yml
 
-```yml
+``` yml
+evp_web_to_pay:
+   credentials:
+       project_id: your_project_id
+       sign_password: your_passwor"
+```
+
+###Symfony 2.1 installation (vendor)
+
+* Execute these commands:
+
+``` bash
+    composer require evp/webtopay-bundle dev-master
+```
+
+* Enable the bundle in the kernel:
+
+``` php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        //... your existing bundles here
+        new Evp\Bundle\WebToPayBundle\EvpWebToPayBundle(),
+    );
+}
+```
+
+* Configure your app/config/config.yml
+
+``` yml
 evp_web_to_pay:    
    credentials:    
        project_id: your_project_id    
