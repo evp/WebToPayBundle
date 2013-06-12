@@ -18,64 +18,12 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Installation
 
-###Symfony 2.0.* installation (deps)
-
-* Add the following lines in your `deps` file:
-
-``` ini
-[WebToPayBundle]
-    git=https://github.com/evp/WebToPayBundle
-    target=/bundles/Evp/Bundle/WebToPayBundle
-```
-
-* Run the vendors script to download the bundle:
-
-``` bash
-$ php bin/vendors install
-```
-
-* Add the Evp namespace to your autoloader:
-
-``` php
-<?php
-// app/autoload.php
-
-$loader->registerNamespaces(array(
-    // ...
-    'Evp' => __DIR__.'/../vendor/bundles',
-));
-```
-
-* Finally, enable the bundle in the kernel:
-
-``` php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    $bundles = array(
-        //... your existing bundles here
-        new Evp\Bundle\WebToPayBundle\EvpWebToPayBundle(),
-    );
-}
-```
-
-* Configure your app/config/config.yml
-
-``` yml
-evp_web_to_pay:
-   credentials:
-       project_id: your_project_id
-       sign_password: your_passwor"
-```
-
 ###Symfony 2.1 installation (vendor)
 
 * Execute these commands:
 
 ``` bash
-    composer require evp/webtopay-bundle dev-master
+    composer require webtopay/webtopay-bundle dev-master
 ```
 
 * Enable the bundle in the kernel:
@@ -140,7 +88,7 @@ $container->get('evp_web_to_pay.request_builder')->redirectPayment(array(
 ));
 ```
 
-Keep in mind the test parameter: you can set it to 1 test whether your request is correct or not.
+Keep in mind the test parameter: you can set it to 1 to make test payments without actually paying.
 
 ##Contacts
 If you have any further questions feel free to contact us:
