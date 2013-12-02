@@ -28,6 +28,8 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('sign_password')->isRequired()->end()
                     ->end()
                 ->end()
+                ->booleanNode('use_sandbox')
+                    ->defaultFalse()
             ->end();
 
         return $treeBuilder;

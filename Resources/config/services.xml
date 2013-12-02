@@ -16,8 +16,11 @@
         <service id="evp_web_to_pay.factory" class="%evp_web_to_pay.factory.class%">
             <argument type="collection">
                 <argument key="projectId">%evp_web_to_pay.credentials.project_id%</argument>
-                <argument key="password">%evp_web_to_pay.credentials.sign_password%</argument>
+                <argument key="password" >%evp_web_to_pay.credentials.sign_password%</argument>
             </argument>
+            <call method="useSandbox">
+                <argument>%evp_web_to_pay.use_sandbox%</argument>
+            </call>
         </service>
 
         <!-- Callback validator service -->
