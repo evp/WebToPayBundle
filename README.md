@@ -10,6 +10,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Code samples](#code-samples)
+* [Using a sandbox](#using-a-sandbox)
 * [Contacts](#contacts)
 
 ##Requirements
@@ -89,6 +90,25 @@ $container->get('evp_web_to_pay.request_builder')->redirectPayment(array(
 ```
 
 Keep in mind the test parameter: you can set it to 1 to make test payments without actually paying.
+
+##Using a sandbox
+###Why use our sandbox?
+Using the *test* parameter is a great way to see whether your *project_id* and *sign_password* settings are correct.
+It will also allow you to test both the user return and the payment callback to your application once the payment has been accepted.
+
+However, during the development phase of your application we suggest you use our [sandbox environment](http://sandbox.mokejimai.lt)
+With the sandbox environment you can go through the same steps that your clients will during a real payment, without actually using any of your real currency.
+
+###Enable sandbox in your configuration
+To enable the sandbox in your configuration add the following lines to your app/config/config.yml
+``` yml
+evp_web_to_pay:
+   credentials:
+       project_id: your_project_id
+       sign_password: your_password
+   use_sandbox: true
+```
+The *use_sandbox* parameter can be set to either *true* or *false*
 
 ##Contacts
 If you have any further questions feel free to contact us:

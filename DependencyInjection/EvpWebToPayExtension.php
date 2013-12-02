@@ -30,6 +30,10 @@ class EvpWebToPayExtension extends Extension
             $container->setParameter('evp_web_to_pay.credentials.sign_password', $config['credentials']['sign_password']);
         }
 
+        if (isset($config['use_sandbox'])) {
+            $container->setParameter('evp_web_to_pay.use_sandbox', $config['use_sandbox']);
+        }
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
