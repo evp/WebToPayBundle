@@ -93,14 +93,14 @@ Keep in mind the test parameter: you can set it to 1 to make test payments witho
 
 ##Using a sandbox
 ###Why use our sandbox?
-Using the "test" parameter is a great way to see whether your project_id and sign_password settings are correct.
+Using the *test* parameter is a great way to see whether your *project_id* and *sign_password* settings are correct.
 It will also allow you to test both the user return and the payment callback to your application once the payment has been accepted.
 
 However, during the development phase of your application we suggest you use our [sandbox environment](http://sandbox.mokejimai.lt)
 With the sandbox environment you can go through the same steps that your clients will during a real payment, without actually using any of your real currency.
 
 ###Enable sandbox in your configuration
-To enabled the sandbox add an additional configuration section to your app/config/config.yml
+To enable the sandbox in your configuration add the following lines to your app/config/config.yml
 ``` yml
 evp_web_to_pay:
    credentials:
