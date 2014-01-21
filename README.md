@@ -24,6 +24,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * Execute these commands:
 
 ``` bash
+    composer require webtopay/libwebtopay 1.6.*@dev
     composer require webtopay/webtopay-bundle dev-master
 ```
 
@@ -60,24 +61,21 @@ That's it, you are now ready to use WebToPayBundle.
 Use the evp_web_to_pay.callback_validator service to perform callback validation
 
 ```php
-   try {
-     $callbackValidator = $this->get('evp_web_to_pay.callback_validator')->validateAndParseData($request->query->all());
+try {
+     $callbackValidator = $this->get('evp_web_to_pay.callback_validator');
      $data = $callbackValidator->validateAndParseData($request->query->all());
      if ($data['status'] == 1) {
-       // Provide your customer with the service
+         // Provide your customer with the service
      }
-
-   } catch (\Exception $e) {
+} catch (\Exception $e) {
     //handle the callback validation error here
-   }
+}
 ```
 ###Creating a request
-Use the evp_web_to_pay.request_builder service to create a request:
+Use the evp_web_to_pay.request_builder service to create a request url:
 
 ```php
-$container->get('evp_web_to_pay.request_builder')->redirectPayment(array(
-    'projectid' => 0,
-    'sign_password' => 'd41d8cd98f00b204e9800998ecf8427e',
+$url = $container->get('evp_web_to_pay.request_builder')->buildRequestUrlFromData(array(
     'orderid' => 0,
     'amount' => 1000,
     'currency' => 'LTL',
@@ -87,6 +85,12 @@ $container->get('evp_web_to_pay.request_builder')->redirectPayment(array(
     'callbackurl' => $self_url.'/callback.php',
     'test' => 0,
 ));
+
+if (headers_sent()) {
+    echo '<script type="text/javascript">window.location = "' . addslashes($url) . '";</script>';
+} else {
+    header("Location: $url", true);
+}
 ```
 
 Keep in mind the test parameter: you can set it to 1 to make test payments without actually paying.
