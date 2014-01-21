@@ -57,39 +57,78 @@ Don't forget to replace *your_project_id* and *your_password* with the actual cr
 That's it, you are now ready to use WebToPayBundle.
 
 ##Code samples
-###CallbackValidation
-Use the evp_web_to_pay.callback_validator service to perform callback validation
+###Controller example
+
+Please see Symfony 2 controller example below with methods for every payment case and callback validation:
 
 ```php
-try {
-     $callbackValidator = $this->get('evp_web_to_pay.callback_validator');
-     $data = $callbackValidator->validateAndParseData($request->query->all());
-     if ($data['status'] == 1) {
-         // Provide your customer with the service
-     }
-} catch (\Exception $e) {
-    //handle the callback validation error here
-}
-```
-###Creating a request
-Use the evp_web_to_pay.request_builder service to create a request url:
+namespace Vendor\Bundle\PaymentsBundle\Controller;
 
-```php
-$url = $container->get('evp_web_to_pay.request_builder')->buildRequestUrlFromData(array(
-    'orderid' => 0,
-    'amount' => 1000,
-    'currency' => 'LTL',
-    'country' => 'LT',
-    'accepturl' => $self_url.'/accept.php',
-    'cancelurl' => $self_url.'/cancel.php',
-    'callbackurl' => $self_url.'/callback.php',
-    'test' => 0,
-));
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-if (headers_sent()) {
-    echo '<script type="text/javascript">window.location = "' . addslashes($url) . '";</script>';
-} else {
-    header("Location: $url", true);
+class PayseraPaymentsController extends Controller
+{
+    /**
+     * @Route("/payments/paysera/pay", name="paysera.pay")
+     */
+    public function redirectToPaymentAction()
+    {
+        $acceptUrl = $this->generateUrl('paysera.accept');
+        $cancelUrl = $this->generateUrl('paysera.cancel');
+        $callbackUrl = $this->generateUrl('paysera.callback');
+
+        $url = $this->container->get('evp_web_to_pay.request_builder')->buildRequestUrlFromData(array(
+            'orderid' => 0,
+            'amount' => 1000,
+            'currency' => 'LTL',
+            'country' => 'LT',
+            'accepturl' => $acceptUrl,
+            'cancelurl' => $cancelUrl,
+            'callbackurl' => $callbackUrl,
+            'test' => 0,
+        ));
+
+        return new RedirectResponse($url);
+    }
+
+    /**
+     * @Route("/payments/paysera/accept", name="paysera.accept")
+     */
+    public function acceptAction()
+    {
+        // payment was successful
+    }
+
+    /**
+     * @Route("/payments/paysera/cancel", name="paysera.cancel")
+     */
+    public function cancelAction()
+    {
+        // payment was unsuccessful
+    }
+
+    /**
+     * @Route("/payments/paysera/callback", name="paysera.callback")
+     */
+    public function callbackAction()
+    {
+        try {
+            $callbackValidator = $this->get('evp_web_to_pay.callback_validator');
+            $data = $callbackValidator->validateAndParseData($this->getRequest()->query->all());
+            if ($data['status'] == 1) {
+                // Provide your customer with the service
+
+                return new Response('OK');
+            }
+        } catch (\Exception $e) {
+            //handle the callback validation error here
+
+            return new Response($e->getTraceAsString(), 500);
+        }
+    }
 }
 ```
 
