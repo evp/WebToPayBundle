@@ -83,7 +83,7 @@ class PayseraPaymentsController extends Controller
         $url = $this->container->get('evp_web_to_pay.request_builder')->buildRequestUrlFromData(array(
             'orderid' => 0,
             'amount' => 1000,
-            'currency' => 'LTL',
+            'currency' => 'EUR',
             'country' => 'LT',
             'accepturl' => $acceptUrl,
             'cancelurl' => $cancelUrl,
