@@ -15,7 +15,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Requirements
 * Symfony 2.0+
-* The original libwebtopay library (can be found [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
+* The original libwebtopay library (can be found [here](https://bitbucket.org/paysera/libwebtopay/get/b62cb2f2b418.zip))
 
 ##Installation
 
