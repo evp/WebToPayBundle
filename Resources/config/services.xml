@@ -24,12 +24,14 @@
         </service>
 
         <!-- Callback validator service -->
-        <service id="evp_web_to_pay.callback_validator" class="%evp_web_to_pay.callback_validator.class%"
-                 factory-service="evp_web_to_pay.factory" factory-method="getCallbackValidator"/>
+        <service id="evp_web_to_pay.callback_validator" class="%evp_web_to_pay.callback_validator.class%">
+            <factory service="evp_web_to_pay.factory" method="getCallbackValidator"/>
+         </service>
 
         <!-- Request builder service -->
-        <service id="evp_web_to_pay.request_builder" class="%evp_web_to_pay.request_builder.class%"
-                 factory-service="evp_web_to_pay.factory" factory-method="getRequestBuilder"/>
+        <service id="evp_web_to_pay.request_builder" class="%evp_web_to_pay.request_builder.class%">
+            <factory service="evp_web_to_pay.factory" method="getRequestBuilder"/>
+         </service>
 
         <!-- Client service -->
         <service id="evp_web_to_pay.client" class="%evp_web_to_pay.client.class%"/>
