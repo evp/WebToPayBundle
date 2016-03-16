@@ -3,7 +3,7 @@
 ##What is WebToPayBundle?
 WebToPayBundle is a small bundle that can serve as a bridge between your Symfony framework and the original webtopay library.
 
-We encourage you to first take a look at the [original library](https://bitbucket.org/webtopay/libwebtopay)
+We encourage you to first take a look at the [original library](https://bitbucket.org/paysera/libwebtopay)
 
 
 ##Sections
@@ -15,7 +15,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Requirements
 * Symfony 2.0+
-* The original libwebtopay library (can be found [here](http://bitbucket.org/webtopay/libwebtopay/get/default.zip))
+* The original libwebtopay library (can be found [here](https://bitbucket.org/paysera/libwebtopay/get/default.zip))
 
 ##Installation
 
@@ -139,7 +139,7 @@ Keep in mind the test parameter: you can set it to 1 to make test payments witho
 Using the *test* parameter is a great way to see whether your *project_id* and *sign_password* settings are correct.
 It will also allow you to test both the user return and the payment callback to your application once the payment has been accepted.
 
-However, during the development phase of your application we suggest you use our [sandbox environment](http://sandbox.mokejimai.lt)
+However, during the development phase of your application we suggest you use our [sandbox environment](https://sandbox.paysera.com)
 With the sandbox environment you can go through the same steps that your clients will during a real payment, without actually using any of your real currency.
 
 ###Enable sandbox in your configuration
