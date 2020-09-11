@@ -24,8 +24,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 * Execute these commands:
 
 ``` bash
-    composer require webtopay/libwebtopay 1.6.*@dev
-    composer require webtopay/webtopay-bundle dev-master
+    composer require webtopay/libwebtopay 1.6
 ```
 
 * Enable the bundle in the kernel:
