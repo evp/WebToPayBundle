@@ -1,7 +1,7 @@
 {
     "name": "webtopay/webtopay-bundle",
     "description": "Symfony2 bundle for WebToPay provided services",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "EVP International",
@@ -10,7 +10,7 @@
     ],
     "require": {
         "symfony/symfony": "^2.6|^3.0",
-        "webtopay/libwebtopay": "1.6.*"
+        "webtopay/libwebtopay": "^1.6"
     },
     "autoload": {
         "psr-0": { "Evp\\Bundle\\WebToPayBundle": "" }
