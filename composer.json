@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "symfony/symfony": "^2.6|^3.0",
+        "symfony/symfony": "^2.6|^3.0|^4.0",
         "webtopay/libwebtopay": "1.6.*"
     },
     "autoload": {
