@@ -3,7 +3,7 @@
 ##What is WebToPayBundle?
 WebToPayBundle is a small bundle that can serve as a bridge between your Symfony framework and the original webtopay library.
 
-We encourage you to first take a look at the [original library](https://bitbucket.org/paysera/libwebtopay)
+We encourage you to first take a look at the [original library](https://github.com/paysera/lib-webtopay)
 
 
 ##Sections
@@ -15,7 +15,7 @@ We encourage you to first take a look at the [original library](https://bitbucke
 
 ##Requirements
 * Symfony 2.0+
-* The original libwebtopay library (can be found [here](https://bitbucket.org/paysera/libwebtopay/get/default.zip))
+* The original libwebtopay library (can be found [here](https://github.com/paysera/lib-webtopay))
 
 ##Installation
 
