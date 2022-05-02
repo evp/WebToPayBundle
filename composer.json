@@ -12,7 +12,7 @@
         "symfony/config": "^2.6|^3.0|^4.0|^5.0",
         "symfony/dependency-injection": "^2.6|^3.0|^4.0|^5.0",
         "symfony/http-kernel": "^2.6|^3.0|^4.0|^5.0",
-        "webtopay/libwebtopay": "1.6.*"
+        "webtopay/libwebtopay": "^1.6"
     },
     "autoload": {
         "psr-0": { "Evp\\Bundle\\WebToPayBundle": "" }
